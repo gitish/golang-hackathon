@@ -9,10 +9,13 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func Examservice(e *echo.Echo) {
+func Transactionservice(e *echo.Echo) {
 	//super admin
-	e.GET("/post-transaction/:arrangmentId", web.PostTransaction)
-	e.GET("/pending-transaction/:arrangmentId", web.PendingTransaction)
+
+	e.GET("/transactions/account", web.Accounts)
+	e.GET("/transactions/account/:acc_id", web.AccountSearch)
+	e.GET("/transactions/:tx_id", web.TransactionSearch)
+
 
 	DEFAULT_STATIC_DIR := "./static"
 	STATIC_DIR := os.Getenv("STATIC_DIR")
