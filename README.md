@@ -1,4 +1,4 @@
-# examsPrepGo
+# Hackathon
 How to set in local
 * Run below Command
 ```
