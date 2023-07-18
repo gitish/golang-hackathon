@@ -6,11 +6,10 @@ func init() {
 	fmt.Println("Model package initialized")
 }
 
-type PendingTransResponse struct {
-	Cid     string `json:"cid"`
-	Comment string `json:"comment"`
-}
-
-type PostTransResponse struct {
-	PendingTransResponse
-}
+const (
+	DB_HOST     = "localhost"
+	DB_PORT     = 5432
+	DB_USER     = "postgres"
+	DB_PASSWORD = "postgres"
+	DB_NAME     = "workshop"
+)
