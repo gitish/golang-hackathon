@@ -1,0 +1,10 @@
+{
+    "request": {
+        "urlPathPattern": "/dp/fs/.*",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "test.json"
+    }
+}
