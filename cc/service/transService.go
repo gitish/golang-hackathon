@@ -12,7 +12,7 @@ import (
 func TransService(e *echo.Echo) {
 	//super admin
 	e.GET("/transactions/account/:acc_id", web.GetAccount)
-	e.GET("/pending-transaction/:arrangmentId", web.PendingTransaction)
+	e.GET("/transactions/:tx_id", web.TransactionSearch)
 
 	DEFAULT_STATIC_DIR := "./static"
 	STATIC_DIR := os.Getenv("STATIC_DIR")

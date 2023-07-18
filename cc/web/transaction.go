@@ -9,13 +9,11 @@ import (
 func GetAccount(c echo.Context) error {
 	//trans := model.PendingTransResponse{}
 	acc_id := c.Param("acc_id")
-	//trans.Cid = arrangmentId
-	//trans.Comment = "PostTransaction"
 
 	return c.JSON(http.StatusOK, acc_id)
 }
 
-func PendingTransaction(c echo.Context) error {
-	acc_id := c.Param("acc_id")
-	return c.JSON(http.StatusOK, acc_id)
+func TransactionSearch(c echo.Context) error {
+	tx_id := c.Param("tx_id")
+	return c.JSON(http.StatusOK, tx_id)
 }
