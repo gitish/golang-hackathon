@@ -18,7 +18,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	//exams services exposed here
-	service.Examservice(e)
+	service.TransService(e)
 
 	httpPort := os.Getenv("PORT")
 	if httpPort == "" {
