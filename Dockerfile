@@ -23,6 +23,7 @@ ENV DATA_DIR=./data
 
 # Build
 RUN CGO_ENABLED=0 GOOS=linux go build -o /credit-card
+#RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /credit-card
 
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
 # But we can (optionally) document in the Dockerfile what ports
