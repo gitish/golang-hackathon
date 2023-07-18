@@ -14,11 +14,11 @@ How to set in local
 ## Create Docker Image
 ```
 docker images ls
-docker build --tag bnk_cc .
+docker build --tag transaction .
 ```
 
 ## Run Docker Images in background
-``` docker run -d -p 8080:8080 bnk_cc  ```
+``` docker run -d -p 8080:8080 transaction  ```
 
 ## Other Docker comand 
 docker ps

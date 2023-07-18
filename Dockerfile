@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.19
+FROM golang:1.20
 
 # Set destination for COPY
 WORKDIR /app
@@ -22,14 +22,14 @@ ENV STATIC_DIR=./static
 ENV DATA_DIR=./data
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /credit-card
+RUN CGO_ENABLED=0 GOOS=linux go build -o /transaction
 #RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /credit-card
 
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
 # But we can (optionally) document in the Dockerfile what ports
 # the application is going to listen on by default.
 # https://docs.docker.com/engine/reference/builder/#expose
-EXPOSE 8080
+EXPOSE 8090 8085 
 
 # Run
-CMD [ "/credit-card" ]
+CMD [ "/transaction" ]
