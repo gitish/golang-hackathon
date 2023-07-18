@@ -1,13 +1,13 @@
-package main
+package dao
 
 import (
-	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
 	_ "github.com/lib/pq"
+	"database/sql"
 )
 
 const (
@@ -18,10 +18,9 @@ const (
 	DB_NAME     = "workshop"
 )
 
+func main1() {
 
-
-// Main function
-func main() {
+	db := setupDB()
 
 	// Init the mux router
 	router := mux.NewRouter()
@@ -50,11 +49,17 @@ func checkErr(err error) {
 	}
 }
 
-// Get all movies
+// DB set up
+func setupDB() *sql.DB {
+	dbinfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
+	db, err := sql.Open("postgres", dbinfo)
 
-// response and request handlers
+	checkErr(err)
+
+	return db
+}
+
 func GetTransactions(w http.ResponseWriter, r *http.Request) {
-	db := setupDB()
 
 	printMessage("Getting transactions...")
 
