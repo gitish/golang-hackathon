@@ -1,0 +1,28 @@
+---
+version: "3.3"
+services:
+  db:
+    image: dockerdeepak/workshop:pgdb_v1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+    container_name: pgdb
+  app:
+    image: transaction:latest
+    #build: .
+    networks:
+      - backend
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 8080:8080
+    container_name: myapp
+    
+networks:
+  backend:
+    driver: bridge

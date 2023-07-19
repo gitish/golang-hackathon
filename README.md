@@ -18,7 +18,9 @@ docker build --tag transaction .
 ```
 
 ## Run Docker Images in background
-``` docker run -d -p 8080:8080 transaction  ```
+``` 
+docker run -d -p 8080:8080 transaction  
+```
 
 ## Other Docker comand 
 docker ps
