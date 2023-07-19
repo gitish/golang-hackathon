@@ -16,12 +16,7 @@ func GetAccount(c echo.Context) error {
 	acc_id := c.Param("acc_id")
 	fmt.Println(acc_id)
 
-	sb := sqlbuilder.NewSelectBuilder()
-	sb.Select("tx_id",
-		"acc_id", "tx_ts", "status",
-		"amount", "merchantname",
-		"merchant_id", "tx_type", "tx_details").
-		From("transaction.transactions").
+	sb := TransQuery().
 		Where("acc_id='" + acc_id + "'")
 
 	status := c.QueryParam("status")
@@ -36,17 +31,22 @@ func GetAccount(c echo.Context) error {
 func TransactionSearch(c echo.Context) error {
 	tx_id := c.Param("tx_id")
 
-	sb := sqlbuilder.NewSelectBuilder()
-	sb.Select("tx_id",
-		"acc_id", "tx_ts", "status",
-		"amount", "merchantname",
-		"merchant_id", "tx_type", "tx_details").
-		From("transaction.transactions").
+	sb := TransQuery().
 		Where("tx_id='" + tx_id + "'")
 
 	response := getTransactionDetails(sb)
 	return c.JSON(http.StatusOK, response)
 
+}
+
+func TransQuery() *sqlbuilder.SelectBuilder {
+	sb := sqlbuilder.NewSelectBuilder()
+	sb.Select("tx_id",
+		"acc_id", "tx_ts", "status",
+		"amount", "merchantname",
+		"merchant_id", "tx_type", "tx_details").
+		From("transaction.transactions")
+	return sb
 }
 
 func getTransactionDetails(sb *sqlbuilder.SelectBuilder) model.JsonResponse {
