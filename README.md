@@ -33,6 +33,10 @@ docker compose up
 docker compose down
 ```
 
+## Sample request
+http://localhost:8080/transactions/0051c7df-5029-48ff-ad8b-0b5d8a4d3272
+http://localhost:8080/transactions/account/GXZB08691413145620?status=complete
+
 ## Other Docker comand 
 docker ps
 docker logs -f 2032a1f8d008
