@@ -12,7 +12,10 @@ services:
       - backend
     container_name: pgdb
   app:
-    image: transaction:latest
+    image: sshail/transaction:latest
+    environment:
+      - PORT=9085
+      - DB_HOST=db
     #build: .
     networks:
       - backend
@@ -20,7 +23,7 @@ services:
       - db
     restart: always
     ports:
-      - 8080:8080
+      - 8080:9085
     container_name: myapp
     
 networks:

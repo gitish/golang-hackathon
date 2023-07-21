@@ -19,7 +19,7 @@ ADD cc ./cc
 # Set required Environment Variable 
 ENV STATIC_DIR=./static
 ENV DATA_DIR=./data
-ENV PORT=8080
+ENV PORT=$PORT
 
 # Build
 RUN CGO_ENABLED=0 GOOS=linux go build -o /transaction
@@ -29,7 +29,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /transaction
 # But we can (optionally) document in the Dockerfile what ports
 # the application is going to listen on by default.
 # https://docs.docker.com/engine/reference/builder/#expose
-EXPOSE 8080 
+#EXPOSE 8080 
 
-# Run
+# Runß
 CMD [ "/transaction" ]

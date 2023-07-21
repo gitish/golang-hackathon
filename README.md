@@ -17,9 +17,20 @@ docker images ls
 docker build --tag transaction .
 ```
 
-## Run Docker Images in background
+## Run Docker Images for background pass -d 
+server porst must be same (e.g. 9080)
 ``` 
-docker run -d -p 8080:8080 transaction  
+docker run -p 8080:9090 -e "PORT=9090" transaction  
+```
+
+## Run DB and Transaction docker all together 
+```
+docker compose up
+```
+
+## Bring all server Down
+```
+docker compose down
 ```
 
 ## Other Docker comand 
@@ -28,7 +39,7 @@ docker logs -f 2032a1f8d008
 docker stop 8e33bd1ffe8c
 
 
-## Postgres deployment 
+## Postgres deployment (Individual)
 docker run -itd -e POSTGRES_USER=shail -e POSTGRES_PASSWORD=shail -p 5432:5432 -v data:/var/lib/postgresql/data --name postgresql postgres
 
 
