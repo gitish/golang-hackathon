@@ -3,6 +3,7 @@ package web
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"shl/bnk/cc/dao"
 	"shl/bnk/cc/model"
@@ -22,6 +23,22 @@ func GetAccount(c echo.Context) error {
 	status := c.QueryParam("status")
 	if status != "" {
 		sb.Where("status='" + status + "'")
+	}
+	/**
+	pagination start here. For pagination pageSize is must
+	however page is optional and if unavailable then it jsut return first page
+	**/
+	pageSize := c.QueryParam("pageSize")
+	if pageSize != "" {
+		limit, _ := strconv.Atoi(pageSize)
+		sb.Limit(limit)
+
+		page := c.QueryParam("page")
+		if page != "" {
+			p, _ := strconv.Atoi(page)
+			offset := limit * (p - 1)
+			sb.Offset(offset)
+		}
 	}
 
 	response := getTransactionDetails(sb)

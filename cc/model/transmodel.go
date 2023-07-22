@@ -12,15 +12,15 @@ func init() {
 }
 
 type Transaction struct {
-	TransactionID string    `json:"transactionId"`
-	AccountID     string    `json:"accountId"`
-	TimeStamp     time.Time `json:"timestamp"`
-	Status        string    `json:"status"`
-	Amount        int       `json:"amount"`
-	MerchantName  string    `json:"merchantName"`
-	MerchantID    string    `json:"merchantId"`
-	Type          string    `json:"type"`
-	Details       string    `json:"details"`
+	TransactionID string    `json:"transactionId" db:"tx_id"`
+	AccountID     string    `json:"accountId"  db:"acc_id"`
+	TimeStamp     time.Time `json:"timestamp"  db:"tx_ts"`
+	Status        string    `json:"status"  db:"status"`
+	Amount        int       `json:"amount"  db:"amount"`
+	MerchantName  string    `json:"merchantName"  db:"merchantname"`
+	MerchantID    string    `json:"merchantId"  db:"merchant_id"`
+	Type          string    `json:"type"  db:"tx_type"`
+	Details       string    `json:"details"  db:"tx_details"`
 }
 
 type JsonResponse struct {
